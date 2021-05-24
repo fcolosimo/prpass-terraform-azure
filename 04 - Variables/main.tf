@@ -1,5 +1,16 @@
+# Use of variables
+# terraform.tfvars file
+# -var parameters in terraform apply 
+# TF_VAR_XXXX in environment variables (Pipelines)
+
 terraform {
 
+    required_providers {
+        azurerm = {
+            source  = "hashicorp/azurerm"
+            version = "2.40.0"
+        }
+    }
 }
 
 provider "azurerm" {
@@ -7,7 +18,7 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "rg_vnet" {
-  name     = var.rg_name
+  name     = "rg-${var.rg_name}"
   location = var.location
 }
 
@@ -16,8 +27,8 @@ module "vnet" {
     source                  = "Azure/vnet/azurerm"
 
     resource_group_name     = azurerm_resource_group.rg_vnet.name
-    vnet_name               = var.vnet_name   
-    address_space           = var.vnet_range
+    vnet_name               = lower(var.vnet_name)
+    address_space           = var.vnet_address_space
     subnet_prefixes         = var.subnet_ranges
     subnet_names            = var.subnet_names
 

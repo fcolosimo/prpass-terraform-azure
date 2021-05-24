@@ -8,34 +8,52 @@ terraform {
     }
 }
 
-#Azure provider
+# Configure Azure provider
 provider "azurerm" {
     features {}
 }
 
-#create resource group
+# Create resource group
 resource "azurerm_resource_group" "rg" {
-    name     = "demo"
+    name     = "demo-2.1"
     location = "eastus2"
     tags = {
         Environment = "Development"
     }
 }
 
-resource "azurerm_storage_account" "storage" {
-  name                     = "demoprpass001"
-  resource_group_name      = azurerm_resource_group.rg.name
-  location                 = azurerm_resource_group.rg.location
-  account_tier             = "Standard"
-  account_replication_type = "GRS"
+# Create App Service Plan
+resource "azurerm_app_service_plan" "asp" {
+  name                = "terraform-appserviceplan"
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+  kind                = "Linux"
+  reserved            = true
 
-  tags = {
-    Environment = "Development"
+  sku {
+    tier = "Standard"
+    size = "S1"
   }
 }
 
-resource "azurerm_storage_container" "container" {
-  name                  = "blobs"
-  storage_account_name  = azurerm_storage_account.storage.name
-  container_access_type = "private"
+resource "azurerm_app_service" "app" {
+  name                = "terraform-prpass-app"
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+  app_service_plan_id = azurerm_app_service_plan.asp.id
+
+  site_config {
+    linux_fx_version = "DOTNETCORE|5.0"
+    dotnet_framework_version = "v5.0"
+  }
+
+  app_settings = {
+    "ASPNETCORE_ENVIRONMENT" = "Stage"
+  }
+
+  connection_string {
+    name  = "Database"
+    type  = "SQLServer"
+    value = "Server=10.0.0.4;Integrated Security=SSPI"
+  }
 }

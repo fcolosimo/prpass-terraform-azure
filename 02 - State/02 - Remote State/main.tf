@@ -21,10 +21,8 @@ provider "azurerm" {
 }
 
 
-
-
 resource "azurerm_resource_group" "rg" {
-    name        = "demo"
+    name        = "demo-2.2"
     location    = "eastus2"   
 
     tags        = {

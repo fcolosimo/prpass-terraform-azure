@@ -1,3 +1,4 @@
+
 terraform {
   required_providers {
     azurerm = {
@@ -13,7 +14,7 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "rg" {
-    name        = "demo"
+    name        = "demo-1.2"
     location    = "eastus2"   
 
     tags        = {

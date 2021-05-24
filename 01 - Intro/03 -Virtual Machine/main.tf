@@ -15,7 +15,7 @@ provider "azurerm" {
 
 #create resource group
 resource "azurerm_resource_group" "rg" {
-    name     = "demo"
+    name     = "demo-1.3"
     location = "eastus2"
     tags = {
         Environment = "Development"

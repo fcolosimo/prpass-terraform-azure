@@ -4,21 +4,59 @@
 
 #### 05/27/2021
 
-## Introduction
+## Pre-requisites
 
-- Basic Workflow
-- Interpolation
-- Virtual Machine
+- [Terraform](http://terraform.io)
+- Visual Studio Code
+- HashiCorp Terraform VS Code Extension
+- Azure Account
 
-## State
 
-- Local State
-- Remote State
-- Outputs
+## 01 - Introduction
 
-## Modules
+### Basic Workflow
 
-- Modules
-- Variables
+- Credentials
+- [Providers](https://registry.terraform.io)
+- Workflow
+    - Init
+    - Plan
+    - Apply
+    - Destroy
 
-## Advanced
+### Interpolation
+
+- References between resources
+
+### Virtual Machine
+
+- Create VM
+
+## 02 - State
+
+### Local State
+
+- terraform.tfstate file
+
+### Remote State
+
+- Save State in Azure Blob Storage
+
+### Data
+
+- 
+
+## 03 - Modules
+
+### External Modules
+
+- Terraform Registry
+
+### Local Modules
+
+- XXXX
+
+
+## 04 - Variables
+
+## 05 - Summary

@@ -5,11 +5,10 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "rg" {
-    name        = "demo"
+    name        = "demo-1.1"
     location    = "eastus2"   
 
     tags        = {
       Environment = "Development",
-      "Projec"  = "PRPASS"
     }
 }
