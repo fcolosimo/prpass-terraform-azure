@@ -4,7 +4,7 @@
 
 #### 05/27/2021
 
-## Pre-requisites
+## Prerequisites
 
 - [Terraform](http://terraform.io)
 - Visual Studio Code
@@ -36,27 +36,32 @@
 
 ### Local State
 
-- terraform.tfstate file
+- Create App Service
+- File terraform.tfstate
 
 ### Remote State
 
 - Save State in Azure Blob Storage
 
-### Data
-
-- 
-
 ## 03 - Modules
 
 ### External Modules
 
-- Terraform Registry
+- [Terraform Registry](https://registry.terraform.io)
 
 ### Local Modules
 
-- XXXX
+- Strorage Account Local Module
 
 
 ## 04 - Variables
 
+- File terraform.tfvars
+- Parameters -var in terraform apply 
+- Environment variables TF_VAR_XXXX
+
 ## 05 - Summary
+
+- Remote State, Modules, Variables
+- Create 2 VM in availability set
+- Network Security Group with RDP Port enabled

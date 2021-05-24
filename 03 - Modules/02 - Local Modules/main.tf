@@ -11,30 +11,27 @@ provider "azurerm" {
     features {}
 }
 
-resource "azurerm_resource_group" "rg_vnet" {
+resource "azurerm_resource_group" "rg" {
   name     = "demo-3.2"
   location = "eastus2"
 }
 
-module "vnet" {
+# Create Storage Account
+module "storage_account1" {
+  source    = "./modules/storage-account"
 
-    source                  = "Azure/vnet/azurerm"
-    resource_group_name     = azurerm_resource_group.rg_vnet.name
-    vnet_name               = "vnet-dev"
-    address_space           = ["10.0.0.0/16"]
-    subnet_prefixes         = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
-    subnet_names            = ["apps", "databases", "web"]
-
-    tags    = {
-        Environment = "Development"
-    }
-    
-    # Explicit dependency
-    depends_on = [azurerm_resource_group.rg_vnet]
-
+  saname    = "storageprpassdemo1"
+  rgname    = azurerm_resource_group.rg.name
+  location  = azurerm_resource_group.rg.location
 }
 
 
-output "vnet_id" {
-    value = module.vnet.vnet_id
+# Create Storage Account
+module "storage_account2" {
+  source    = "./modules/storage-account"
+
+  saname    = "storageprpassdemo2"
+  rgname    = azurerm_resource_group.rg.name
+  location  = azurerm_resource_group.rg.location
 }
+

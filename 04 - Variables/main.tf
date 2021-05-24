@@ -1,8 +1,3 @@
-# Use of variables
-# terraform.tfvars file
-# -var parameters in terraform apply 
-# TF_VAR_XXXX in environment variables (Pipelines)
-
 terraform {
 
     required_providers {
