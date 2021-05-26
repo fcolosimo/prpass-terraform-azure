@@ -27,6 +27,7 @@
 ### Interpolation
 
 - References between resources
+- [terraform graph](http://webgraphviz.com)
 
 ### Virtual Machine
 
@@ -42,6 +43,10 @@
 ### Remote State
 
 - Save State in Azure Blob Storage
+
+### Import Infrastructure
+
+- terraform import
 
 ## 03 - Modules
 
