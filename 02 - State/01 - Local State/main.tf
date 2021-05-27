@@ -35,7 +35,7 @@ resource "azurerm_app_service_plan" "asp" {
     size = "S1"
   }
 }
-
+# Create App Service
 resource "azurerm_app_service" "app" {
   name                = "terraform-prpass-app"
   location            = azurerm_resource_group.rg.location
