@@ -58,14 +58,17 @@
 
 - Strorage Account Local Module
 
-
 ## 04 - Variables
 
 - File terraform.tfvars
 - Parameters -var in terraform apply 
 - Environment variables TF_VAR_XXXX
 
-## 05 - Summary
+## 05 - Terraform Cloud
+
+- [Demo Terraform Cloud](https://app.terraform.io/) 
+
+## 06 - Summary
 
 - Remote State, Modules, Variables
 - Create 2 VM in availability set
