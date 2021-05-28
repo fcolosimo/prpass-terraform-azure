@@ -22,6 +22,19 @@ resource "azurerm_resource_group" "rg" {
     }
 }
 
+resource "azurerm_resource_group" "rg2" {
+    name        = "demo-1.2"
+    location    = "eastus2"   
+
+    tags        = {
+      Environment = "Development"
+    }
+
+    depends_on = [
+      azurerm_resource_group.rg
+    ]
+}
+
 resource "azurerm_subnet" "subnet" {
   name                 = "default"
   resource_group_name  = azurerm_resource_group.rg.name
